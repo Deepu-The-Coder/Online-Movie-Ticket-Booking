@@ -1,6 +1,7 @@
 import React from 'react'
 import google from "../assets/google.svg"
 import apple from "../assets/apple.svg"
+import BlurCircle from './BlurCircle'
 const Footer = () => {
   return (
     <>

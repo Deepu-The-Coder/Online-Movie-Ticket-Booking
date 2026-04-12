@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import youtube from "../assets/youtube.png"
+import BlurCircle from './BlurCircle';
+
+
 const Trailer = () => {
   // 1. Set the initial state to your default video ID (XNQbH1SDPRk)
   const [currentVideoId, setCurrentVideoId] = useState('XNQbH1SDPRk');
@@ -27,7 +30,7 @@ const Trailer = () => {
       <div className="flex w-229.5 gap-4">
   
         {/* Notice the arrow function: () => handleCardClick(...) */}
-        <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all" onClick={() => handleCardClick("KPCMsJgJ3UI")}>
+        <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("KPCMsJgJ3UI")}>
           <img src="https://img.youtube.com/vi/KPCMsJgJ3UI/hqdefault.jpg" alt="Trailer 1 Thumbnail" className="rounded-md" />   
 
           <img 
@@ -37,7 +40,7 @@ const Trailer = () => {
   />     
         </div>
 
-        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all" onClick={() => handleCardClick("NHk7scrb_9I")}>
+        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("NHk7scrb_9I")}>
           <img src="https://img.youtube.com/vi/NHk7scrb_9I/hqdefault.jpg" alt="Trailer 2 Thumbnail" className="rounded-md" />       
           <img 
             src={youtube}
@@ -46,7 +49,7 @@ const Trailer = () => {
   />     
         </div>
         
-        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all" onClick={() => handleCardClick("ejMMn0t58Lc")}>
+        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("ejMMn0t58Lc")}>
           <img src="https://img.youtube.com/vi/ejMMn0t58Lc/hqdefault.jpg" alt="Trailer 3 Thumbnail" className="rounded-md" />       
           <img 
             src={youtube}
@@ -55,7 +58,7 @@ const Trailer = () => {
   />     
         </div>
 
-        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all" onClick={() => handleCardClick("yy1Fdp_h4mM")}>
+        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("yy1Fdp_h4mM")}>
           <img src="https://img.youtube.com/vi/yy1Fdp_h4mM/hqdefault.jpg" alt="Trailer 4 Thumbnail" className="rounded-md" />
           <img 
             src={youtube}

@@ -3,6 +3,9 @@ import cars from "../assets/cars.jpg"
 import batman from "../assets/batman.jpg"
 const dummyBookingData = [
   {
+    user:{
+      name: "Deepak"
+    },
     // The "show" object contains both the movie details and the specific time
     show: {
       movie: {
@@ -19,6 +22,9 @@ const dummyBookingData = [
     bookedSeats: ["A1", "A2"]
   },
   {
+    user:{
+      name: "Deepak"
+    },
     show: {
       movie: {
         title: "Batman",

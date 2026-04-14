@@ -12,6 +12,11 @@ import Footer from './components/Footer'
 import HeroSection from './components/HeroSection'
 import Trending from './components/Trending'
 import Trailer from './components/Trailer'
+import Layout from './pages/admin/Layout'
+import Dashboard from './pages/admin/Dashboard'
+import AddShows from './pages/admin/AddShows'
+import ListShows from './pages/admin/ListShows'
+import ListBookings from './pages/admin/ListBookings'
 
 const App = () => {
 
@@ -28,6 +33,12 @@ const App = () => {
       <Route path='/movies/:id/:date' element={<SeatLayout/>}/>
       <Route path='/my-bookings' element={<MyBookings/>}/>
       <Route path='/favourites' element={<Favourites/>}/>
+      <Route path='/admin/*' element={<Layout/>}>
+        <Route index element={<Dashboard/>}/>
+        <Route path='add-shows' element={<AddShows/>}/>
+        <Route path='list-shows' element={<ListShows/>}/>
+        <Route path='list-bookings' element={<ListBookings/>}/>
+      </Route>
     </Routes>
     
     {!isAdminRoute && <Footer/>}

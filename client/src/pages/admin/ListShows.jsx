@@ -3,6 +3,7 @@ import dummyShowData from '../../assets/dummyShowData';
 import Loading from '../../components/Loading';
 import Title from '../../components/Title';
 import dateFormat from '../../lib/dateFormat';
+import BlurCircle from '../../components/BlurCircle';
 
 const ListShows = () => {
 
@@ -36,6 +37,7 @@ const ListShows = () => {
   return !loading ? (
     <>
         <Title text1="List" text2="Shows"/>
+        <BlurCircle top="70px" left="250px"/>
         <div className='max-w-4xl mt-6 overflow-x-auto'>
             <table className='w-full border-collapse rounded-md overflow-hidden text-nowrap'>
                 <thead>

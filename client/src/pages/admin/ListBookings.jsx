@@ -3,6 +3,7 @@ import dummyBookingData from '../../assets/dummyBookingData'
 import Loading from '../../components/Loading'
 import Title from '../../components/Title'
 import dateFormat from '../../lib/dateFormat'
+import BlurCircle from '../../components/BlurCircle'
 
 const ListBookings = () => {
     const currency= import.meta.env.VITE_CURRENCY
@@ -22,6 +23,7 @@ const ListBookings = () => {
   return !isLoading ? (
     <>
     <Title text1="List" text2="Bookings"/>
+    <BlurCircle top="70px" left="250px"/>
     <div className='max-w-4xl mt-6 overflow-x-auto'>
         <table className='w-full border-collapse rounded-md overflow-hidden text-nowrap'>
             <thead>

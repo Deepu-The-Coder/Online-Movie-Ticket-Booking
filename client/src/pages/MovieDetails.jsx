@@ -1,7 +1,7 @@
 import React from 'react'
 import CastList from '../components/CastList.jsx'
-import { useState,useEffect } from 'react'
-import { useParams,useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import dummyShowData from "../assets/dummyShowData.js"
 import dummyDateTimeData from "../assets/dummyDateTimeData.js"
 import Card from '../components/Card.jsx'
@@ -10,28 +10,58 @@ import { Heart, PlayCircleIcon, StarIcon } from 'lucide-react'
 import { timeFormat } from '../lib/utils.js'
 import DateSelect from '../components/DateSelect.jsx'
 import Loading from '../components/Loading.jsx'
+// 👇 1. Import toast for user feedback
+import { toast } from 'react-hot-toast' 
 
 const MovieDetails = () => {
 
   const {id} = useParams()
   const navigate = useNavigate()
-  const [show,setShow] = useState(null)
+  const [show, setShow] = useState(null)
+  
+  // 👇 2. State to track if this specific movie is a favorite
+  const [isFavorite, setIsFavorite] = useState(false)
 
-  const getShow = async()=>{
-    const show = dummyShowData.find((show)=>(show.id) === id)
-    if(show){
+  const getShow = async () => {
+    const foundShow = dummyShowData.find((show) => String(show.id) === id)
+    if(foundShow){
       setShow({
-        movie:show,
-        dateTime:dummyDateTimeData
+        movie: foundShow,
+        dateTime: dummyDateTimeData
       })
     }
+  }
+
+  // 👇 3. Check if movie is already in favorites when the page loads
+  useEffect(() => {
+    getShow();
+    
+    // Read from localStorage
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    // Check if this movie's ID exists in the saved favorites array
+    const isSaved = savedFavorites.some(fav => String(fav.id) === id);
+    setIsFavorite(isSaved);
+  }, [id])
+
+  // 👇 4. Function to handle clicking the heart
+  const toggleFavorite = () => {
+    let savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    if (isFavorite) {
+      // If it's already a favorite, filter it OUT of the array
+      savedFavorites = savedFavorites.filter(fav => String(fav.id) !== id);
+      toast.success("Removed from Favorites");
+    } else {
+      // If it's NOT a favorite, push the WHOLE movie object into the array
+      // (Saving the whole object makes building the Favourites page much easier later!)
+      savedFavorites.push(show.movie);
+      toast.success("Added to Favorites!");
     }
-
-  useEffect(()=>{
-    getShow()}
-  ,[id])
-
-  
+    
+    // Save back to localStorage and update our state
+    localStorage.setItem('favorites', JSON.stringify(savedFavorites));
+    setIsFavorite(!isFavorite);
+  }
 
   return show ? (
     <div className='px-6 md:px-16 lg:px-40 pt-30 md:pt-50'>
@@ -50,7 +80,7 @@ const MovieDetails = () => {
           <p className='text-gray-400 mt-2 text-sm leading-tight max-w-xl'>{show.movie.overview}</p>
 
           <p>
-            {timeFormat(show.movie.runtime)} • {show.movie.genres.map(genre => genre.name).join(' | ')} • {show.movie.releaseYear.split("-")[0]}
+            {timeFormat(show.movie.runtime)} • {show.movie.genres.map(genre => genre.name).join(' | ')} • {show.movie.releaseYear?.split("-")[0]}
           </p>
 
           <div className='flex items-center flex-wrap gap-4 mt-4'>
@@ -59,9 +89,15 @@ const MovieDetails = () => {
               Watch Trailer
               </button>
             <a href="#dateSelect" className='px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md font-medium cursor-pointer active:scale-95'>Buy Tickets</a>
-            <button className='p-2.5 text-sm bg-gray-700 hover:bg-gray-900 transition rounded-full  cursor-pointer active:scale-95'>
-              <Heart className='w-5 h-5 ' />
+            
+            {/* 👇 5. Add onClick and dynamic styling to the Heart button */}
+            <button 
+              onClick={toggleFavorite}
+              className='p-2.5 text-sm bg-gray-700 hover:bg-gray-900 transition rounded-full cursor-pointer active:scale-95'
+            >
+              <Heart className={`w-5 h-5 transition-colors ${isFavorite ? 'fill-primary text-primary' : 'text-white'}`} />
             </button>
+            
           </div>
         </div>
       </div>
@@ -75,7 +111,8 @@ const MovieDetails = () => {
             {dummyShowData.slice(4,8).map((item) => {
               return(
               <Card 
-              title= {item.title} 
+              key={item.id} // Added missing key prop here!
+              title={item.title} 
               image={item.image} 
               about={item.about}
               rating={item.rating}
@@ -87,8 +124,8 @@ const MovieDetails = () => {
         <div className='flex justify-center mt-5'>
           <button 
           onClick={() => {navigate('/movies'); 
-            scrollTo(0, 0)}}
-          className=' w-32 px-6 py-2 bg-primary hover:bg-primary-dull transition rounded-lg font-medium cursor-pointer  duration-300'>Show More</button>
+            window.scrollTo(0, 0)}}
+          className=' w-32 px-6 py-2 bg-primary hover:bg-primary-dull transition rounded-lg font-medium cursor-pointer duration-300'>Show More</button>
         </div>
     
     </div>

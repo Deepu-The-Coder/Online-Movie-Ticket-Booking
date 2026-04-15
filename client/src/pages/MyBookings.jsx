@@ -42,7 +42,16 @@ const MyBookings = () => {
         <div className='flex flex-col md:iems-end md:text-right justify-between items-end p-4'>
           <div className='flex items-center gap-4'>
             <p className='text-2xl font-semibold mb-3 '>{currency}{item.amount}</p>
-            {!item.isPaid && <button className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer'>Pay Now</button>}
+            {!item.isPaid && (
+              <a 
+                href="https://buy.stripe.com/test_28E8wO69ZfDVcLJ5iB43S00" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer block text-center hover:bg-primary/80 transition-colors'
+              >
+                Pay Now
+              </a>
+            )}
           </div>
           <div className='text-sm'>
             <p><span className='text-gray-400'>Total Tickets:</span> {item.bookedSeats.length}</p>

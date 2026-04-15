@@ -40,6 +40,27 @@ const SeatLayout = () => {
       setSelectedSeats(prev=> prev.includes(seatId) ? prev.filter(seat => seat !== seatId) : [...prev,seatId])
     }
 
+    const handleCheckout = () => {
+    // 1. Validation: Did they pick a time? (Safety check)
+    if (!selectedTime) {
+      return toast.error("Please select a time slot first.");
+    }
+    
+    // 2. Validation: Did they pick any seats?
+    if (selectedSeats.length === 0) {
+      return toast.error("Please select at least one seat.");
+    }
+
+    // 3. Success! (In a real app, you would send this data to your backend here)
+    // console.log("Booking Data:", { id, date, selectedTime, selectedSeats });
+    
+    toast.success("Seats locked! Redirecting to your bookings...");
+    
+    // 4. Send them to the My Bookings page to pay
+    navigate('/my-bookings');
+    window.scrollTo(0, 0);
+  }
+
     const renderSeats =(row,count=9)=>(
       <div key={row} className='flex gap-2 mt-2'>
         <div className='flex flex-wrap items-center  justify-center gap-2'>
@@ -102,7 +123,8 @@ const SeatLayout = () => {
        </div>
 
 
-      <button className='flex items-center gap-1 mt-20 px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer active:scale-95'>
+      <button onClick={handleCheckout}
+      className='flex items-center gap-1 mt-20 px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer active:scale-95'>
         Proceed to Checkout
         <ArrowRightIcon  strokeWidth={3} className='w-4 h-4' />
       </button>

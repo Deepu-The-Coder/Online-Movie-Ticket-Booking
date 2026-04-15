@@ -22,9 +22,8 @@ const Navbar = () => {
         {/* <XIcon className='max-md:hidden absolute top-6 right-6 w-6 h-6 cursor-pointer' /> */}
         <Link onClick={() => {scrollTo(0, 0)}} to='/' >Home</Link>
         <Link onClick={() => {scrollTo(0, 0)}} to='/movies' >Movies</Link>
-        <Link onClick={() => {scrollTo(0, 0)}} to='/theaters' >Theaters</Link>
-        <Link onClick={() => {scrollTo(0, 0)}} to='/releases' >Releases</Link>
         <Link onClick={() => {scrollTo(0, 0)}} to='/favourites' >Favourites</Link>
+        <Link onClick={() => {scrollTo(0, 0)}} to='/admin' >Dashboard</Link>
       </div>
 
       <div className='flex items-center gap-8'>

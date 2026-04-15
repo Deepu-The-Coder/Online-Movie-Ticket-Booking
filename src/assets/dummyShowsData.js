@@ -1,6 +1,6 @@
 import interstellar from '../assets/interstellar.jpg';
 import batman from '../assets/batman.jpg';
-import dhurandhar from '../assets/dhurandhar.jpg';
+import spidy from '../assets/spidy.jpg';
 import pshyco from '../assets/pshyco.jpg';
 
 const dummyShowsData = [
@@ -22,8 +22,8 @@ const dummyShowsData = [
 },
 {
     id: "103",
-    title: "Dhurandhar",
-    poster_path: dhurandhar,
+    title: "SpiderMan",
+    poster_path: spidy,
     vote_average: 7.1,
     vote_count: '9.53m',
     release_date:2025

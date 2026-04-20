@@ -5,6 +5,11 @@ import connectDB from './configs/db.js'
 import { clerkMiddleware } from '@clerk/express'
 import { serve } from "inngest/express";
 import { inngest, functions } from "./inngest/index.js"
+//to fix db not connected error
+import dns from 'dns'
+
+//Changing dns
+dns.setServers(['1.1.1.1', '8.8.8.8']);
 
 
 const app = express()

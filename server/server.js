@@ -9,6 +9,7 @@ import { inngest, functions } from "./inngest/index.js"
 import dns from 'dns'
 import showRouter from './routes/showRoutes.js'
 import bookingRouter from './routes/bookingRoutes.js'
+import adminRouter from './routes/adminRoutes.js'
 
 //Changing dns
 dns.setServers(['1.1.1.1', '8.8.8.8']);
@@ -30,5 +31,6 @@ app.get('/', (req,res)=> res.send('Server is Live'))
 app.use('/api/inngest', serve({ client: inngest, functions }));
 app.use('/api/show', showRouter)
 app.use('/api/booking', bookingRouter)
+app.use('/apip/admin', adminRouter)
 
 app.listen(port, ()=> console.log(`Server is Listening at http://localhost:${port}`))

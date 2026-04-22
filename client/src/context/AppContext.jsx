@@ -42,13 +42,13 @@ export const AppProvider = ({children})=>{
     const fetchShows = async() =>{
         try {
             const {data} = await axios.get('/api/show/all')
-            if(!data.success){
+            if(data.success){
                 setShows(data.shows)
             }else{
                 toast.error(data.message)
             }
         } catch (error) {
-            console.log(error.message);
+            
         }
     }
 
@@ -90,7 +90,6 @@ export const AppProvider = ({children})=>{
         user, getToken, navigate, isAdmin, shows,
         favoriteMovies, fetchFavoriteMovies
     }
-
     return (
         <AppContext.Provider value={value}>
             {children}

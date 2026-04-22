@@ -48,7 +48,7 @@ export const AppProvider = ({children})=>{
                 toast.error(data.message)
             }
         } catch (error) {
-            
+            console.log(error.message);
         }
     }
 

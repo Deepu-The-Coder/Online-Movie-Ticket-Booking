@@ -1,12 +1,13 @@
 import express from 'express'
 import { getAllBookings, getAllShows, getDashboardData, isAdmin } from '../controllers/adminController.js';
+import { protectAdmin } from '../middleware/auth.js';
 
 const adminRouter = express.Router();
 
 //add protectAdmin middleware in future
-adminRouter.get('is-admin', isAdmin)
-adminRouter.get('/dashboard', getDashboardData)
-adminRouter.get('/all-shows', getAllShows)
-adminRouter.get('/all-bookings', getAllBookings)
+adminRouter.get('/is-admin',protectAdmin, isAdmin)
+adminRouter.get('/dashboard',protectAdmin, getDashboardData)
+adminRouter.get('/all-shows',protectAdmin, getAllShows)
+adminRouter.get('/all-bookings',protectAdmin, getAllBookings)
 
 export default adminRouter;

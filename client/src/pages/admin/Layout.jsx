@@ -1,17 +1,20 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import AdminNavbar from '../../components/admin/AdminNavbar'
 import AdminSidebar from '../../components/admin/AdminSidebar'
 import { Outlet } from 'react-router-dom'
 import { useAppContext } from '../../context/AppContext'
 import Loading from '../../components/Loading'
+
 const Layout = () => {
+  const {isAdmin, isCheckingAdmin} = useAppContext()
 
-  const {isAdmin, fetchIsAdmin} = useAppContext()
+  // 1. If we are still waiting for the API, show the loading screen
+  if (isCheckingAdmin) {
+      return <Loading/>
+  }
 
-  useEffect(()=>{
-    fetchIsAdmin()
-  },[])
-
+  // 2. If the API is done and they are an admin, show the layout
+  // (If they aren't an admin, AppContext has already redirected them to '/')
   return isAdmin ? (
     <>
         <AdminNavbar/>
@@ -22,7 +25,7 @@ const Layout = () => {
         </div>
         </div>
     </>
-  ) : <Loading/>
+  ) : null
 }
 
 export default Layout

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import dummyBookingData from '../../assets/dummyBookingData'
 import Loading from '../../components/Loading'
 import Title from '../../components/Title'
 import dateFormat from '../../lib/dateFormat'

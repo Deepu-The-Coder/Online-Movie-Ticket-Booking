@@ -10,7 +10,6 @@ import Home from './pages/Home'
 import {Toaster} from 'react-hot-toast'
 import Footer from './components/Footer'
 import HeroSection from './components/HeroSection'
-import Trending from './components/Trending'
 import Trailer from './components/Trailer'
 import Layout from './pages/admin/Layout'
 import Dashboard from './pages/admin/Dashboard'
@@ -45,7 +44,7 @@ const App = () => {
         <Route index element={<Dashboard/>}/>
         <Route path='add-shows' element={<AddShows/>}/>
         <Route path='list-shows' element={<ListShows/>}/>
-        <Route path='list-bookings' element={<ListBookings/>}/>
+        {/* <Route path='list-bookings' element={<ListBookings/>}/> */}
       </Route>
     </Routes>
     

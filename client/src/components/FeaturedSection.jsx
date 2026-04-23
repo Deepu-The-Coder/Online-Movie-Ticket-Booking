@@ -1,11 +1,14 @@
 import React from 'react'
 import { useNavigate  } from 'react-router-dom'
-import Card from './Card'
+import Card from './Card.jsx'
 import dummyShowData from "../assets/dummyShowData.js"
-import BlurCircle from './BlurCircle'
-const Trending = () => {
+import BlurCircle from './BlurCircle.jsx'
+import { useAppContext } from '../context/AppContext.jsx'
+const FeaturedSection = () => {
 
   const navigate = useNavigate()
+
+  const {shows} = useAppContext()
 
   return (
     <div className='mt-20 mx-45 flex flex-col gap-10'>
@@ -42,4 +45,4 @@ const Trending = () => {
   )
 }
 
-export default Trending
+export default FeaturedSection

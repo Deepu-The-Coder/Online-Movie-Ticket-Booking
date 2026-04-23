@@ -27,7 +27,7 @@ app.use(cors())
 app.use(clerkMiddleware())
 
 app.use(cors({
-    origin: 'https://your-new-vercel-url.vercel.app', // No trailing slash!
+    origin: 'https://online-movie-ticket-booking-4242.vercel.app', // No trailing slash!
     credentials: true
 }));
 

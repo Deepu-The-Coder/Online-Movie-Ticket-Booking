@@ -57,7 +57,6 @@ export const addShow = async(req,res) =>{
             movie = await Movie.create(movieDetails);
         }
 
-
             const showsToCreate = [];
             showsInput.forEach(show => {
                     const showDate = show.date;
@@ -71,7 +70,6 @@ export const addShow = async(req,res) =>{
                         })
                     })
                 });
-            
             if(showsToCreate.length >0){
                 await Show.insertMany(showsToCreate);
             }           
@@ -80,9 +78,7 @@ export const addShow = async(req,res) =>{
     catch(error){
         console.log(error);
         res.json({success: false, message: error.message})
-        
     }
-
 }
 
 //API to get all shows from the database

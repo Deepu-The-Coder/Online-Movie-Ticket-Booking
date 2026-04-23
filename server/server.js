@@ -26,6 +26,10 @@ app.use(express.json())
 app.use(cors())
 app.use(clerkMiddleware())
 
+app.use(cors({
+    origin: 'https://your-new-vercel-url.vercel.app', // No trailing slash!
+    credentials: true
+}));
 
 //API routes
 app.get('/', (req,res)=> res.send('Server is Live'))

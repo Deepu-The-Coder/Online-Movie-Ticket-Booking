@@ -1,5 +1,4 @@
 import React from 'react'
-import dummyShowsData from '../../assets/dummyShowsData.js'
 import Loading from '../../components/Loading'
 import Title from '../../components/Title'
 import BlurCircle from '../../components/BlurCircle.jsx'

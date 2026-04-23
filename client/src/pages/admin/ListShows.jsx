@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import dummyShowData from '../../assets/dummyShowData';
 import Loading from '../../components/Loading';
 import Title from '../../components/Title';
 import dateFormat from '../../lib/dateFormat';
 import BlurCircle from '../../components/BlurCircle';
+import { useAppContext } from '../../context/AppContext';
 
 const ListShows = () => {
 
     const currency =import.meta.env.VITE_CURRENCY
+
+    const {axios, getToken, user} = useAppContext()
 
     const [shows, setShows] = useState([]);
     const [loading, setLoading] = useState(true);
 
     const getAllShows = async () =>{
         try{
-            setShows([{
-                movie:dummyShowData[0],
-                showDateTime: "2025-06-30t02:30:00.000Z",
-                showPrice: 59,
-                occupiedSeats: {
-                    A1: "user_1",
-                    B1: "user_2",
-                    C1: "user_3"
-                }
-            }]);
+            const {data} = await axios.get("/api/admin/all-shows",{
+                headers: {Authorization: `Bearer ${await getToken}`}
+            })
+            setShows(data.shows)
             setLoading(false);
         }
         catch(error){
@@ -32,8 +28,10 @@ const ListShows = () => {
     }
 
     useEffect(()=>{
-        getAllShows();
-    }, []);
+        if(user){
+            getAllShows();
+        }
+    }, [user]);
   return !loading ? (
     <>
         <Title text1="List" text2="Shows"/>

@@ -1,4 +1,3 @@
-// src/assets/dummyBookingData.js
 import cars from "../assets/cars.jpg"
 import batman from "../assets/batman.jpg"
 const dummyBookingData = [

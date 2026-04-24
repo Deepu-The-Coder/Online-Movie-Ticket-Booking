@@ -26,11 +26,6 @@ app.use(express.json())
 app.use(cors())
 app.use(clerkMiddleware())
 
-app.use(cors({
-    origin: 'https://online-movie-ticket-booking-4242.vercel.app', // No trailing slash!
-    credentials: true
-}));
-
 //API routes
 app.get('/', (req,res)=> res.send('Server is Live'))
 app.use('/api/inngest', serve({ client: inngest, functions }));

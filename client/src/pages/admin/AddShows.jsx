@@ -111,7 +111,7 @@ const AddShows = () => {
   }, [user])
 
 
-  return nowPlayingMovies?.length > 0 ? (
+  return nowPlayingMovies.length > 0 ? (
     <>
       <Title text1="Add" text2="Shows"/>
       <BlurCircle top="70px" left="250px"/>

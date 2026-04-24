@@ -50,7 +50,7 @@ export const AppProvider = ({children})=>{
                 toast.error(data.message)
             }
         } catch (error) {
-            
+            console.log(error.message)
         }
     }
 
@@ -67,7 +67,6 @@ export const AppProvider = ({children})=>{
             }else{
                 toast.error(data.message)
             }
-            
         } catch (error) {
             console.log(error)
         }

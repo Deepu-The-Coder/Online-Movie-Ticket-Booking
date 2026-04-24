@@ -1,28 +1,44 @@
 import React from 'react'
-import dummyShowData from '../assets/dummyShowData.js'
 import Loading from '../components/Loading.jsx'
 import BlurCircle from '../components/BlurCircle.jsx'
-import dummyBookingData from '../assets/dummyBookingData.js'
 import { timeFormat } from '../lib/utils.js'
+import { useAppContext } from '../context/AppContext.jsx'
+import dateFormat from '../lib/dateFormat.js'
 
 const MyBookings = () => {
   const currency = import.meta.env.VITE_CURRENCY
 
+   const { axios, getToken, user, image_base_url} = useAppContext()
+
   const [bookings, setBookings] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(true)
 
-  React.useEffect(() => {
-    getMyBookings()
-  }, [])
-
+  
   const getMyBookings = async () => {
-    setBookings(dummyBookingData)
+    try {
+      const {data} = await axios.get('/api/user/bookings' ,{
+        headers: {Authorization: `Bearer ${await getToken()}`}
+      })
+
+      if(data.success){
+        setBookings(data.bookings)
+      }
+    } catch (error) {
+      console.log(error.message);
+      
+    }
     setIsLoading(false)
   }
+  
+  React.useEffect(() => {
+    if(user){
+      getMyBookings()
+    }
+  }, [user])
 
   return !isLoading ? (
     <div className='relative px-6 md:px-16 lg:px-40 pt-30 md:pt-40 min-h-[80vh]'>
-      <BlurCircle top="-100px" left="100px" />
+      <BlurCircle top="10px" left="100px" />
       <div>
         <BlurCircle bottom='0px' left='600px'/>
       </div>
@@ -31,11 +47,11 @@ const MyBookings = () => {
       {bookings.map((item,index)=>(
         <div key={index} className='flex flex-col md:flex-row justify-between bg-primary/8 border border-primary/20 rounded-lg p-2 max-w-3xl mt-4'>
            <div className='flex flex-col md:flex-row'>
-            <img src={item.show.movie.image} alt={item.show.movie.title} className='md:max-w-45 aspect-video h-auto rounded object-cover object-bottom' />
+            <img src={image_base_url + item.show.movie.image} alt={item.show.movie.title} className='md:max-w-45 aspect-video h-auto rounded object-cover object-bottom' />
             <div className='flex flex-col p-4'>
               <p className='text-lg font-semibold'>{item.show.movie.title}</p>
               <p className='text-gray-400 text-sm'>{timeFormat(item.show.movie.runtime)}</p>
-              <p className='text-gray-400 text-sm mt-auto'>{item.show.showDateTime}</p>
+              <p className='text-gray-400 text-sm mt-auto'>{dateFormat(item.show.showDateTime)}</p>
            </div>
         </div> 
 

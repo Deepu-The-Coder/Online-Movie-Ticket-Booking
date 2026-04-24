@@ -8,6 +8,7 @@ import { ArrowRightIcon, ClockIcon } from 'lucide-react'
 import isoTimeFormat from '../lib/isoTimeFormat'
 import BlurCircle from '../components/BlurCircle'
 import download from '../assets/download.svg'
+import { useAppContext } from '../context/AppContext'
 
 const SeatLayout = () => {
 
@@ -20,13 +21,18 @@ const SeatLayout = () => {
 
   const navigate =useNavigate()
 
+  const{axios, getToken, user} = useAppContext();
+
   const getShow = async()=>{
-    const show = dummyShowData.find((show)=>(show.id) === id)
-    if(show){
-      setShow({
-        movie:show,
-        dateTime:dummyDateTimeData
-      })
+    try {
+      const { data} = await axios.get(`/api/show/${id}`)
+
+      if(data.success){
+        setShow(data)
+      }
+    } catch (error) {
+      console.log(error.message);
+      
     }
     }
 

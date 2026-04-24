@@ -1,13 +1,13 @@
 import React from 'react'
-import dummyShowData from "../assets/dummyShowData.js"
 import Card from '../components/Card'
 import BlurCircle from '../components/BlurCircle'
+import { useAppContext } from '../context/AppContext.jsx'
 
 
 const Movies = () => {
   
-
-  return dummyShowData.length > 0 ? (
+  const {shows} = useAppContext()
+  return shows.length > 0 ? (
     <div className='mt-40 mx-45 flex flex-col gap-10'>
       <BlurCircle top="20px" left="100px" />
       <BlurCircle top="700px" left="300px" />
@@ -17,17 +17,10 @@ const Movies = () => {
         
         <div className='grid grid-cols-3 gap-10'>
             
-            {dummyShowData.map((item) => {
-              return(
-              <Card 
-              title= {item.title} 
-              image={item.image} 
-              about={item.about}
-              rating={item.rating}
-              id={item.id}
-               />
-            )
-          })}
+            {shows.map((movie)=>(
+              <Card movie={movie} key={movie._id}/>
+            ))
+            }
         </div>
         </div>
         </div>

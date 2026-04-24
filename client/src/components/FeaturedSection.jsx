@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate  } from 'react-router-dom'
 import Card from './Card.jsx'
-import dummyShowData from "../assets/dummyShowData.js"
 import BlurCircle from './BlurCircle.jsx'
 import { useAppContext } from '../context/AppContext.jsx'
 const FeaturedSection = () => {
@@ -22,18 +21,10 @@ const FeaturedSection = () => {
         className='px-5 py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer  duration-300'>View More</button>
         </div>
         <div className='grid grid-cols-3 gap-10'>
-            
-            {dummyShowData.slice(0,6).map((item) => {
-              return(
-              <Card 
-              title= {item.title} 
-              image={item.image} 
-              about={item.about}
-              rating={item.rating}
-              id={item.id}
-               />
-            )
-          })}
+            {shows.slice(0,6).map((show) => (
+              <Card key={show._id} movie={show}/>
+            ))
+          }
         </div>
         <div className='flex justify-center mt-5'>
           <button 

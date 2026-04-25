@@ -1,7 +1,7 @@
 import Booking from "../models/Booking.js";
 import Show from "../models/Show.js"
 import stripe from 'stripe'
-import { Inngest } from "inngest";
+import {inngest} from "../inngest/index.js"
 
 
 //Function to check availability of selected seats for a movie
@@ -81,7 +81,12 @@ export const createBooking = async (req,res) =>{
         booking.paymentLink = session.url
         await booking.save()  //user can redirect after booking fail
 
-        //Run Inngest Scheduler Func to check payment status after 10 mins
+        //Run Inngest Scheduler Func to check payment status after 10 mins 
+        //Inngest->Class inngest->object which was not created
+        // const inngest = new Inngest({
+        //     id: "movie-app",
+        // });
+
         await inngest.send({
             name:"app/checkpayment",
             data:{

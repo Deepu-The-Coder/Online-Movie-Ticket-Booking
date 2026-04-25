@@ -80,6 +80,13 @@ export const createBooking = async (req,res) =>{
         booking.paymentLink = session.url
         await booking.save()  //user can redirect after booking fail
 
+        //Run Inngest Scheduler Func to check payment status after 10 mins
+        await inngest.send({
+            name:"app/checkpayent",
+            data:{
+                bookingId: booking._id.toString()
+            }
+        })
         res.json({success:true, url:session.url})
     } catch (error) {
         console.log(error.message);

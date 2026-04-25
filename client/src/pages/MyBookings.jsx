@@ -4,6 +4,7 @@ import BlurCircle from '../components/BlurCircle.jsx'
 import { timeFormat } from '../lib/utils.js'
 import { useAppContext } from '../context/AppContext.jsx'
 import dateFormat from '../lib/dateFormat.js'
+import { Link } from 'react-router-dom'
 
 const MyBookings = () => {
   const currency = import.meta.env.VITE_CURRENCY
@@ -59,14 +60,11 @@ const MyBookings = () => {
           <div className='flex items-center gap-4'>
             <p className='text-2xl font-semibold mb-3 '>{currency}{item.amount}</p>
             {!item.isPaid && (
-              <a 
-                href="https://buy.stripe.com/test_28E8wO69ZfDVcLJ5iB43S00" 
-                target="_blank" 
-                rel="noopener noreferrer"
+              <Link to={item.paymentLink}
                 className='bg-primary px-4 py-1.5 mb-3 text-sm rounded-full font-medium cursor-pointer block text-center hover:bg-primary/80 transition-colors'
               >
                 Pay Now
-              </a>
+              </Link>
             )}
           </div>
           <div className='text-sm'>

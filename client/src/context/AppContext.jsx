@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import axios from 'axios'
 import { useAuth, useUser } from "@clerk/react";
 import { useLocation, useNavigate } from "react-router-dom";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 axios.defaults.baseURL = import.meta.env.VITE_BASE_URL
   
@@ -31,10 +31,10 @@ export const AppProvider = ({children})=>{
 
             setIsAdmin(data.isAdmin)
 
-            // if(!data.isAdmin && location.pathname.startsWith("/admin")){
-            //     navigate('/')
-            //     toast.error('You are not authorized to access  admin dashboard')
-            // }
+            if(!data.isAdmin && location.pathname.startsWith("/admin")){
+                navigate('/')
+                toast.error('You are not authorized to access  admin dashboard')
+            }
 
         } catch (error) {
             console.log(error);

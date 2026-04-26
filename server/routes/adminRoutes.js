@@ -4,9 +4,9 @@ import { protectAdmin } from '../middleware/auth.js';
 
 const adminRouter = express.Router();
 
-//add protectAdmin middleware in future
+
 adminRouter.get('/is-admin',protectAdmin, isAdmin)
-adminRouter.get('/dashboard', getDashboardData)
+adminRouter.get('/dashboard',protectAdmin, getDashboardData)
 adminRouter.get('/all-shows', getAllShows)
 adminRouter.get('/all-bookings', getAllBookings)
 

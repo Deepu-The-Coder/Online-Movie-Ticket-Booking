@@ -6,10 +6,12 @@ import BlurCircle from '../../components/BlurCircle';
 import dateFormat from '../../lib/dateFormat.js';
 import { useAppContext } from '../../context/AppContext.jsx';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
 
     const {axios, getToken, user, image_base_url} = useAppContext()
+    const navigate = useNavigate()
     const currency = import.meta.env.VITE_CURRENCY
     
     const [dashboardData, setDashboardData] = React.useState({
@@ -43,8 +45,16 @@ const Dashboard = () => {
                 toast.error(data.message)
             }
         } catch (error) {
-            toast.error("Error Fetching dashboard data")
-        }
+            if (error.response?.status === 403) {
+                toast.error("You are not authorized");
+                navigate("/");   
+                } else if (error.response?.status === 401) {
+                toast.error("Please login first");
+                navigate("/");
+                } else {
+                toast.error("Error Fetching dashboard data");
+                }
+                    }
     };
 
     useEffect(()=>{

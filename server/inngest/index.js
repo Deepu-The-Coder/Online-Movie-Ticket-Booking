@@ -169,7 +169,7 @@ const sendShowReminders = inngest.createFunction(
                 for(const show of shows){
                     if(!show.movie || !show.occupiedSeats) continue;
 
-                    const userIds = [...new set(Object.values(show.occupiedSeats))];
+                    const userIds = [...new Set(Object.values(show.occupiedSeats))];
                     if(userIds.length===0) continue;
                     const users = await User.find({_id: {$in: userIds}}).select("name email");
 
@@ -196,7 +196,7 @@ const sendShowReminders = inngest.createFunction(
                     to:task.userEmail,
                     subject: `Reminder: Your movie "${task.movieTitle}" starts soon!`,
                     body:`
-                    <div style="font-family:Arial, sans-serif; padding:20px; >
+                    <div style="font-family:Arial, sans-serif; padding:20px;" >
                     <h2>Hello ${task.userName},</h2>
                     <p>This is a quick reminder that your movie:</p>
                     <h3 style="color: #F84565;">"${task.movieTitle}"</h3>

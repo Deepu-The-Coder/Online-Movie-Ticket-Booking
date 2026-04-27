@@ -41,7 +41,9 @@ class Footer extends Component {
             </h1>
 
             <div className='w-full md:w-100 text-sm'>
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
+              It is a high-performance movie ticketing platform designed to bridge the gap between "wanting 
+to watch" and "walking into the theatre." Built for the modern cinephile who values time as 
+much as the cinematic experience.
             </div>
 
             <div className='flex gap-2 mt-2 md:mt-0'>
@@ -59,7 +61,7 @@ class Footer extends Component {
         <hr className="border-gray-600 border mx-4 md:mx-45" />
 
         <div className='text-center text-xs md:text-base mb-5 mt-4 md:mt-2 px-4'>
-          Copyright 2026 © WebTech. All Right Reserved.
+          Copyright 2026 © QuickShow. All Right Reserved.
         </div>
       </>
     );

@@ -27,7 +27,7 @@ const AdminSidebar = () => {
          
          <p className='mt-2 text-base font-medium hidden md:block'>{user.firstName} {user.lastName}</p>
          
-         <div className='w-full mt-6 md:mt-0'>
+         <div className='w-full mt-6 md:mt-10'>
             {adminNavLinks.map((link, index)=>(
                 <NavLink key={index} to={link.path}  end
                 className={({isActive}) => `relative flex items-center justify-center md:justify-start gap-3 w-full py-4 md:py-3 md:pl-10 text-gray-400 transition-all ${isActive ? 'bg-primary/15 text-primary' : 'hover:bg-white/5'}`}>

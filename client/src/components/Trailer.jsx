@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import youtube from "../assets/youtube.png"
 import BlurCircle from './BlurCircle';
@@ -14,16 +15,14 @@ const Trailer = () => {
 
   return (
     <>
-    <div className='hidden md:block'>
-      <BlurCircle  left='50px' top='1800px'/>
-    </div>
-    
-    <div className='flex flex-col px-4 md:px-0 md:pl-45 mt-10 md:mt-25 '>
-      <div className='text-2xl md:text-3xl text-slate-200 mb-6 md:mb-12'>Trailers</div>
+    <BlurCircle  left='50px' top='1800px'/>
+    <div className='flex flex-col pl-45 mt-25 '>
+      <div className='text-3xl text-slate-200 mb-12'>Trailers</div>
         
       {/* 3. The main iframe is now bound to the currentVideoId state */}
       <iframe 
-        className='w-full aspect-video md:w-[918px] md:h-[540px] rounded-xl md:rounded-none'
+        width="918" 
+        height="540" 
         src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=0&rel=0`}     // do autopay=0
         title="YouTube video player" 
         frameBorder="0" 
@@ -31,43 +30,43 @@ const Trailer = () => {
         allowFullScreen
       ></iframe>
 
-      <div className="grid grid-cols-2 md:flex w-full md:w-229.5 gap-2 md:gap-4 mt-4 md:mt-0">
+      <div className="flex w-229.5 gap-4">
   
         {/* Notice the arrow function: () => handleCardClick(...) */}
         <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("KPCMsJgJ3UI")}>
-          <img src="https://img.youtube.com/vi/KPCMsJgJ3UI/hqdefault.jpg" alt="Trailer 1 Thumbnail" className="rounded-md w-full" />   
+          <img src="https://img.youtube.com/vi/KPCMsJgJ3UI/hqdefault.jpg" alt="Trailer 1 Thumbnail" className="rounded-md" />   
 
           <img 
             src={youtube}
             alt="yt"
-            className="absolute inset-0 m-auto w-8 h-8 md:w-12 md:h-12 brightness-75 hover:brightness-110 transition-all"
+            className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
   />     
         </div>
 
-        <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("NHk7scrb_9I")}>
-          <img src="https://img.youtube.com/vi/NHk7scrb_9I/hqdefault.jpg" alt="Trailer 2 Thumbnail" className="rounded-md w-full" />      
+        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("NHk7scrb_9I")}>
+          <img src="https://img.youtube.com/vi/NHk7scrb_9I/hqdefault.jpg" alt="Trailer 2 Thumbnail" className="rounded-md" />       
           <img 
             src={youtube}
             alt="yt"
-            className="absolute inset-0 m-auto w-8 h-8 md:w-12 md:h-12 brightness-75 hover:brightness-110 transition-all"
+            className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
   />     
         </div>
         
-        <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("ejMMn0t58Lc")}>
-          <img src="https://img.youtube.com/vi/ejMMn0t58Lc/hqdefault.jpg" alt="Trailer 3 Thumbnail" className="rounded-md w-full" />      
+        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("ejMMn0t58Lc")}>
+          <img src="https://img.youtube.com/vi/ejMMn0t58Lc/hqdefault.jpg" alt="Trailer 3 Thumbnail" className="rounded-md" />       
           <img 
             src={youtube}
             alt="yt"
-            className="absolute inset-0 m-auto w-8 h-8 md:w-12 md:h-12 brightness-75 hover:brightness-110 transition-all"
+            className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
   />     
         </div>
 
-        <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("yy1Fdp_h4mM")}>
-          <img src="https://img.youtube.com/vi/yy1Fdp_h4mM/hqdefault.jpg" alt="Trailer 4 Thumbnail" className="rounded-md w-full" />
+        <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("yy1Fdp_h4mM")}>
+          <img src="https://img.youtube.com/vi/yy1Fdp_h4mM/hqdefault.jpg" alt="Trailer 4 Thumbnail" className="rounded-md" />
           <img 
             src={youtube}
             alt="yt"
-            className="absolute inset-0 m-auto w-8 h-8 md:w-12 md:h-12 brightness-75 hover:brightness-110 transition-all"
+            className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
   />     
         </div>
 
@@ -78,91 +77,6 @@ const Trailer = () => {
 }
 
 export default Trailer;
-
-
-
-
-
-
-//Non-Responsive Code
-// import React, { useState } from 'react';
-// import youtube from "../assets/youtube.png"
-// import BlurCircle from './BlurCircle';
-
-
-// const Trailer = () => {
-//   // 1. Set the initial state to your default video ID (XNQbH1SDPRk)
-//   const [currentVideoId, setCurrentVideoId] = useState('XNQbH1SDPRk');
-
-//   // 2. The function to update the state
-//   const handleCardClick = (newVideoId) => {
-//     setCurrentVideoId(newVideoId); 
-//   };
-
-//   return (
-//     <>
-//     <BlurCircle  left='50px' top='1800px'/>
-//     <div className='flex flex-col pl-45 mt-25 '>
-//       <div className='text-3xl text-slate-200 mb-12'>Trailers</div>
-        
-//       {/* 3. The main iframe is now bound to the currentVideoId state */}
-//       <iframe 
-//         width="918" 
-//         height="540" 
-//         src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=0&rel=0`}     // do autopay=0
-//         title="YouTube video player" 
-//         frameBorder="0" 
-//         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-//         allowFullScreen
-//       ></iframe>
-
-//       <div className="flex w-229.5 gap-4">
-  
-//         {/* Notice the arrow function: () => handleCardClick(...) */}
-//         <div className="relative cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("KPCMsJgJ3UI")}>
-//           <img src="https://img.youtube.com/vi/KPCMsJgJ3UI/hqdefault.jpg" alt="Trailer 1 Thumbnail" className="rounded-md" />   
-
-//           <img 
-//             src={youtube}
-//             alt="yt"
-//             className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
-//   />     
-//         </div>
-
-//         <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("NHk7scrb_9I")}>
-//           <img src="https://img.youtube.com/vi/NHk7scrb_9I/hqdefault.jpg" alt="Trailer 2 Thumbnail" className="rounded-md" />       
-//           <img 
-//             src={youtube}
-//             alt="yt"
-//             className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
-//   />     
-//         </div>
-        
-//         <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("ejMMn0t58Lc")}>
-//           <img src="https://img.youtube.com/vi/ejMMn0t58Lc/hqdefault.jpg" alt="Trailer 3 Thumbnail" className="rounded-md" />       
-//           <img 
-//             src={youtube}
-//             alt="yt"
-//             className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
-//   />     
-//         </div>
-
-//         <div className="cursor-pointer brightness-75 hover:brightness-110 transition-all hover:-translate-y-1  duration-300" onClick={() => handleCardClick("yy1Fdp_h4mM")}>
-//           <img src="https://img.youtube.com/vi/yy1Fdp_h4mM/hqdefault.jpg" alt="Trailer 4 Thumbnail" className="rounded-md" />
-//           <img 
-//             src={youtube}
-//             alt="yt"
-//             className="absolute inset-0 m-auto w-12 h-12 brightness-75 hover:brightness-110 transition-all"
-//   />     
-//         </div>
-
-//       </div>
-//     </div>
-//     </>
-//   );
-// }
-
-// export default Trailer;
 
 
 

@@ -3,7 +3,6 @@ import { useNavigate  } from 'react-router-dom'
 import Card from './Card.jsx'
 import BlurCircle from './BlurCircle.jsx'
 import { useAppContext } from '../context/AppContext.jsx'
-
 const FeaturedSection = () => {
 
   const navigate = useNavigate()
@@ -11,77 +10,30 @@ const FeaturedSection = () => {
   const {shows} = useAppContext()
 
   return (
-    <div className='mt-10 md:mt-20 mx-4 md:mx-45 flex flex-col gap-6 md:gap-10'>
-      
-      <div className='hidden md:block'>
-        <BlurCircle top="720px" left="110px" />
-      </div>
-
-        <div className='flex items-center justify-between'>
-        <div className='text-base md:text-lg font-semibold md:font-normal'>Now Trending</div>
+    <div className='mt-20 mx-45 flex flex-col gap-10'>
+      <BlurCircle top="720px" left="110px" />
+        <div className='flex justify-between'>
+        <div className='text-lg '>Now Trending</div>
         <button
         onClick={() => {navigate('/movies');
-          window.scrollTo(0,0)}
+          scrollTo(0,0)}
         }
-        className='px-4 py-2 md:px-5 text-sm md:text-base bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer  duration-300'>View More</button>
+        className='px-5 py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer  duration-300'>View More</button>
         </div>
-        
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10'>
+        <div className='grid grid-cols-3 gap-10'>
             {shows.slice(0,6).map((show) => (
               <Card key={show._id} movie={show}/>
             ))
           }
         </div>
-
-        <div className='flex justify-center mt-2 md:mt-5'>
+        <div className='flex justify-center mt-5'>
           <button 
           onClick={() => {navigate('/movies'); 
-            window.scrollTo(0, 0)}}
-          className='w-full md:w-32 px-6 py-3 md:py-2 bg-primary hover:bg-primary-dull transition rounded-lg font-medium cursor-pointer  duration-300'>Show More</button>
+            scrollTo(0, 0)}}
+          className=' w-32 px-6 py-2 bg-primary hover:bg-primary-dull transition rounded-lg font-medium cursor-pointer  duration-300'>Show More</button>
         </div>
     </div>
   )
 }
 
 export default FeaturedSection
-
-
-// import React from 'react'
-// import { useNavigate  } from 'react-router-dom'
-// import Card from './Card.jsx'
-// import BlurCircle from './BlurCircle.jsx'
-// import { useAppContext } from '../context/AppContext.jsx'
-// const FeaturedSection = () => {
-
-//   const navigate = useNavigate()
-
-//   const {shows} = useAppContext()
-
-//   return (
-//     <div className='mt-20 mx-45 flex flex-col gap-10'>
-//       <BlurCircle top="720px" left="110px" />
-//         <div className='flex justify-between'>
-//         <div className='text-lg '>Now Trending</div>
-//         <button
-//         onClick={() => {navigate('/movies');
-//           scrollTo(0,0)}
-//         }
-//         className='px-5 py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer  duration-300'>View More</button>
-//         </div>
-//         <div className='grid grid-cols-3 gap-10'>
-//             {shows.slice(0,6).map((show) => (
-//               <Card key={show._id} movie={show}/>
-//             ))
-//           }
-//         </div>
-//         <div className='flex justify-center mt-5'>
-//           <button 
-//           onClick={() => {navigate('/movies'); 
-//             scrollTo(0, 0)}}
-//           className=' w-32 px-6 py-2 bg-primary hover:bg-primary-dull transition rounded-lg font-medium cursor-pointer  duration-300'>Show More</button>
-//         </div>
-//     </div>
-//   )
-// }
-
-// export default FeaturedSection

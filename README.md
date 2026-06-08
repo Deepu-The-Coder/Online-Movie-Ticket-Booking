@@ -7,4 +7,4 @@ Engineered a custom seat reservation engine that holds selected seats for 10 min
 Automated transactional workflows, including booking confirmations and showtime reminders, by scheduling background jobs with Inngest.
 Designed an Admin Dashboard to manage movie listings, show timings, and system activity.
 
-Deployment Link: https://quickwatch-khaki.vercel.app/
+Deployment Link: https://quickwatch-app.vercel.app

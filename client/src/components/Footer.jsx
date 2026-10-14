@@ -1,144 +1,61 @@
-import React, { Component } from 'react';
-import google from "../assets/google.svg";
-import apple from "../assets/apple.svg";
-import BlurCircle from './BlurCircle';
+import { Link } from 'react-router-dom'
+import google from '../assets/google.svg'
+import apple from '../assets/apple.svg'
+import BlurCircle from './BlurCircle'
 
-class Footer extends Component {
+const Footer = () => (
+  <footer className='relative mt-20 overflow-hidden border-t border-white/10 bg-gradient-to-b from-[#111012] to-[#09090B] text-slate-300'>
+    <BlurCircle top='-150px' right='-100px' />
 
-  renderCompanySection() {
-    return (
-      <div className='flex flex-col gap-4 md:gap-6'>
-        <div className='text-base md:text-lg font-semibold'>Company</div>
-        <div className='flex flex-col text-sm gap-2 md:gap-0'>
-          <div>Home</div>
-          <div>About us</div>
-          <div>Contact us</div>
-          <div>Privacy policy</div>
-        </div>
-      </div>
-    );
-  }
-
-  renderContactSection() {
-    return (
-      <div className='flex flex-col gap-4 md:gap-6'>
-        <div className='text-base md:text-lg font-semibold'>Get in touch</div>
-        <div className='flex flex-col text-sm gap-2 md:gap-0'>
-          <div>+91-72xxxxxx08</div>
-          <div>xyz@gmail.com</div>
-        </div>
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <>
-        <div className='flex flex-col md:flex-row mt-16 md:mt-40 justify-center mb-10 gap-10 md:gap-40 text-slate-200 px-4 md:px-0'>
-          <div className='flex flex-col gap-4'>
-            <h1 className='text-red-500 flex text-3xl md:text-4xl font-bold items-center'>
-              Q<span className='text-white text-lg md:text-xl font-bold'>uickWatch</span>
-            </h1>
-
-            <div className='w-full md:w-100 text-sm'>
-              It is a high-performance movie ticketing platform designed to bridge the gap between "wanting 
-to watch" and "walking into the theatre." Built for the modern cinephile who values time as 
-much as the cinematic experience.
-            </div>
-
-            <div className='flex gap-2 mt-2 md:mt-0'>
-              <img src={google} alt='' className='w-32 md:w-auto' />
-              <img src={apple} alt='' className='w-32 md:w-auto' />
-            </div>
-          </div>
-
-          <div className='flex justify-between md:justify-start gap-10 md:gap-40 pr-8 md:pr-0'>
-            {this.renderCompanySection()}
-            {this.renderContactSection()}
+    <div className='relative mx-auto grid max-w-7xl gap-12 px-5 py-14 sm:px-8 sm:py-16 md:grid-cols-[1.5fr_1fr_1fr] md:gap-10 lg:px-12'>
+      <section className='max-w-lg'>
+        <Link to='/' aria-label='QuickWatch home' className='inline-flex items-center'>
+          <span className='text-4xl font-bold tracking-tight text-primary'>Q</span>
+          <span className='-ml-1 text-2xl font-semibold tracking-tight text-white'>uickWatch</span>
+        </Link>
+        <p className='mt-4 max-w-md text-sm leading-7 text-gray-400'>
+          It is a high-performance movie ticketing platform designed to bridge the gap between
+          &quot;wanting to watch&quot; and &quot;walking into the theatre.&quot; Built for the modern
+          cinephile who values time as much as the cinematic experience.
+        </p>
+        <div className='mt-6'>
+          <p className='mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-gray-500'>Get the app</p>
+          <div className='flex flex-wrap gap-3'>
+            <img src={google} alt='Get it on Google Play' className='h-10 w-auto transition hover:opacity-80' />
+            <img src={apple} alt='Download on the App Store' className='h-10 w-auto transition hover:opacity-80' />
           </div>
         </div>
+      </section>
 
-        <hr className="border-gray-600 border mx-4 md:mx-45" />
+      <nav aria-label='Company' className='md:justify-self-center'>
+        <h2 className='text-sm font-semibold text-white'>Company</h2>
+        <ul className='mt-5 space-y-3 text-sm text-gray-400'>
+          <li><Link to='/' className='transition hover:text-primary'>Home</Link></li>
+          <li>About us</li>
+          <li>Contact us</li>
+          <li>Privacy policy</li>
+        </ul>
+      </nav>
 
-        <div className='text-center text-xs md:text-base mb-5 mt-4 md:mt-2 px-4'>
-          Copyright 2026 © QuickShow. All Right Reserved.
+      <section>
+        <h2 className='text-sm font-semibold text-white'>Get in touch</h2>
+        <div className='mt-5 space-y-3 text-sm text-gray-400'>
+          <p>+91-72xxxxxx08</p>
+          <p>xyz@gmail.com</p>
         </div>
-      </>
-    );
-  }
-}
+        <p className='mt-6 max-w-xs text-xs leading-5 text-gray-500'>
+          Here to help make your next movie night a great one.
+        </p>
+      </section>
+    </div>
 
-export default Footer;
+    <div className='relative mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'>
+      <div className='flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-gray-500 sm:flex-row sm:items-center sm:justify-between'>
+        <p>Copyright 2026 © QuickWatch. All rights reserved.</p>
+        <p>Made for movie lovers.</p>
+      </div>
+    </div>
+  </footer>
+)
 
-// import React, { Component } from 'react';
-// import google from "../assets/google.svg";
-// import apple from "../assets/apple.svg";
-// import BlurCircle from './BlurCircle';
-
-// class Footer extends Component {
-
-//   renderCompanySection() {
-//     return (
-//       <div className='flex flex-col gap-6'>
-//         <div className='text-lg font-semibold'>Company</div>
-//         <div className='flex flex-col text-sm'>
-//           <div>Home</div>
-//           <div>About us</div>
-//           <div>Contact us</div>
-//           <div>Privacy policy</div>
-//         </div>
-//       </div>
-//     );
-//   }
-
-//   renderContactSection() {
-//     return (
-//       <div className='flex flex-col gap-6'>
-//         <div className='text-lg font-semibold'>Get in touch</div>
-//         <div className='flex flex-col text-sm'>
-//           <div>+91-72xxxxxx08</div>
-//           <div>xyz@gmail.com</div>
-//         </div>
-//       </div>
-//     );
-//   }
-
-//   render() {
-//     return (
-//       <>
-//         <div className='flex mt-40 justify-center mb-10 gap-40 text-slate-200'>
-//           <div className='flex flex-col gap-4'>
-//             <h1 className='text-red-500 flex text-4xl font-bold items-center'>
-//               Q<span className='text-white text-xl font-bold'>uickWatch</span>
-//             </h1>
-
-//             <div className='w-100 text-sm'>
-//               Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...
-//             </div>
-
-//             <div className='flex gap-2'>
-//               <img src={google} alt='' />
-//               <img src={apple} alt='' />
-//             </div>
-//           </div>
-
-//           <div className='flex gap-40'>
-//             {this.renderCompanySection()}
-//             {this.renderContactSection()}
-//           </div>
-//         </div>
-
-//         <hr className="border-gray-600 border mx-45" />
-
-//         <div className='text-center mb-5 mt-2'>
-//           Copyright 2026 © WebTech. All Right Reserved.
-//         </div>
-//       </>
-//     );
-//   }
-// }
-
-// export default Footer;
-
-
-
+export default Footer

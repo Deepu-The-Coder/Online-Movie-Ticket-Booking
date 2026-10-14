@@ -9,26 +9,26 @@ const Card = ({movie}) => {
 
     const{image_base_url} = useAppContext()
   return (
-    <div className='flex flex-col justify-between p-2  bg-gray-800 rounded-2xl hover:-translate-y-1 transition duration-300 w-66'>
-      <div className='overflow-hidden rounded-2xl'>
+      <article className='flex w-full max-w-[360px] flex-col justify-between overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-[#19171a] to-[#101012] p-2 shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-primary/10'>
+        <div className='overflow-hidden rounded-xl'>
       <img onClick={()=> {
         navigate(`/movies/${movie._id}`);
         scrollTo(0,0)
       }}
-       src={image_base_url + movie.backdrop_path} alt='' className='w-62.5 h-53.75 rounded-2xl object-cover hover:scale-110 transition-transform duration-700 cursor-pointer'/>
+         src={image_base_url + movie.backdrop_path} alt={`${movie.title} backdrop`} className='aspect-[16/10] w-full rounded-xl object-cover transition-transform duration-700 hover:scale-105 cursor-pointer'/>
       </div>
 
-       <p className='font-semibold mt-4 truncate text-lg'>{movie.title}</p>
+         <p className='mt-4 truncate px-2 text-lg font-semibold text-white'>{movie.title}</p>
 
-       <p className='text-sm text-gray-400 mt-2'>
+         <p className='mt-2 px-2 text-sm text-gray-400'>
         {new Date(movie.release_date).getFullYear()} • {movie.genres.slice(0,2).map(genre=>genre.name).join(" | ") } • {timeFormat(movie.runtime)}
        </p>
 
-       <div className='flex items-center justify-between mt-4 pb-3'>
+         <div className='mt-4 flex items-center justify-between px-2 pb-2'>
         <button onClick={()=>{navigate(`/movies/${movie._id}`);
         scrollTo(0,0)
         }}
-        className='px-4 py-2 text-xs bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer '>
+          className='rounded-full bg-primary px-4 py-2 text-xs font-semibold text-white transition hover:bg-primary-dull'>
           Buy Tickets
         </button>
 
@@ -38,9 +38,8 @@ const Card = ({movie}) => {
         </p>
        </div>
       
-    </div>
+      </article>
   )
 }
 
 export default Card
-

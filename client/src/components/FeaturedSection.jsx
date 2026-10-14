@@ -10,29 +10,33 @@ const FeaturedSection = () => {
   const {shows} = useAppContext()
 
   return (
-    <div className='mt-20 mx-45 flex flex-col gap-10'>
+    <section className='relative mx-auto mt-8 flex w-full max-w-[1440px] flex-col gap-8 overflow-hidden rounded-3xl border border-primary/10 bg-gradient-to-br from-primary/[0.08] via-[#120d10] to-[#0c0b0d] px-5 py-12 shadow-[0_24px_80px_rgba(248,69,101,0.06)] sm:px-8 sm:py-16 md:mt-12 md:gap-10 md:px-12 lg:px-20 xl:px-24'>
       <BlurCircle top="720px" left="110px" />
-        <div className='flex justify-between'>
-        <div className='text-lg '>Now Trending</div>
+        <div className='flex items-end justify-between gap-4'>
+        <div>
+          <p className='mb-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary'>Handpicked for you</p>
+          <h2 className='text-2xl font-semibold text-rose-50 sm:text-3xl'>Now Trending</h2>
+          <p className='mt-2 text-sm text-rose-100/60'>The stories everyone is talking about.</p>
+        </div>
         <button
         onClick={() => {navigate('/movies');
           scrollTo(0,0)}
         }
-        className='px-5 py-2 bg-primary hover:bg-primary-dull transition rounded-full font-medium cursor-pointer  duration-300'>View More</button>
+        className='hidden rounded-full border border-primary/25 bg-primary/10 px-5 py-2.5 text-sm font-medium text-rose-50 transition hover:border-primary/50 hover:bg-primary/20 sm:block'>View all</button>
         </div>
-        <div className='grid grid-cols-3 gap-10'>
+        <div className='grid grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8'>
             {shows.slice(0,6).map((show) => (
               <Card key={show._id} movie={show}/>
             ))
           }
         </div>
-        <div className='flex justify-center mt-5'>
+        <div className='flex justify-center sm:hidden'>
           <button 
           onClick={() => {navigate('/movies'); 
             scrollTo(0, 0)}}
-          className=' w-32 px-6 py-2 bg-primary hover:bg-primary-dull transition rounded-lg font-medium cursor-pointer  duration-300'>Show More</button>
+          className='rounded-full bg-primary px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-primary/20 transition hover:bg-primary-dull'>View all movies</button>
         </div>
-    </div>
+    </section>
   )
 }
 

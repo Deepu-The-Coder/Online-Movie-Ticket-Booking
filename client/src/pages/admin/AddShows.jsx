@@ -7,7 +7,6 @@ import { CheckIcon, DeleteIcon, StarIcon } from 'lucide-react'
 import { useAppContext } from '../../context/AppContext.jsx'
 import { kConverter } from '../../lib/kConverter.js'
 import toast from 'react-hot-toast'
-import axios from 'axios'
 
 const AddShows = () => {
 

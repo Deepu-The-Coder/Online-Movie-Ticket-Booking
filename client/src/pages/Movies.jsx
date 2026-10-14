@@ -1,31 +1,66 @@
-
-import React from 'react'
-import Card from '../components/Card'
+import { Film, MoveRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import BlurCircle from '../components/BlurCircle'
+import Card from '../components/Card'
 import { useAppContext } from '../context/AppContext.jsx'
 
-
 const Movies = () => {
-  
-  const {shows} = useAppContext()
-  return shows.length > 0 ? (
-    <div className='mt-40 mx-45 flex flex-col gap-10'>
-      <BlurCircle top="20px" left="100px" />
-      <BlurCircle top="700px" left="300px" />
-      <BlurCircle top="500px" right="50px" />
-        <div className='flex flex-col justify-between gap-7'>
-        <span className='text-xl'>Now Showing..</span>
-        
-        <div className='grid grid-cols-3 gap-10'>
-            
-            {shows.map((movie)=>(
-              <Card movie={movie} key={movie._id}/>
-            ))
-            }
-        </div>
-        </div>
-        </div>
-  ) : <div className='mt-40 mx-45 flex flex-col gap-10'>Loading...</div>
+  const { shows } = useAppContext()
+
+  return (
+    <main className='relative min-h-[70vh] overflow-hidden px-4 pb-20 pt-32 sm:px-6 lg:px-10'>
+      <BlurCircle top='80px' left='-140px' />
+      <BlurCircle top='520px' right='-150px' />
+
+      <section className='relative mx-auto max-w-7xl'>
+        <header className='mb-10 border-b border-white/10 pb-8 sm:mb-12 sm:pb-10'>
+          <p className='mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-primary'>
+            QuickWatch <span className='mx-2 text-white/30'>/</span> Now showing
+          </p>
+          <div className='flex flex-col justify-between gap-5 sm:flex-row sm:items-end'>
+            <div>
+              <h1 className='text-4xl font-bold tracking-tight text-white sm:text-5xl'>
+                Find your next <span className='text-primary'>favorite.</span>
+              </h1>
+              <p className='mt-3 max-w-xl text-sm leading-6 text-gray-400 sm:text-base'>
+                The latest stories on the big screen. Pick a movie and make it a night.
+              </p>
+            </div>
+            {shows.length > 0 && (
+              <span className='w-fit rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-gray-300'>
+                {shows.length} {shows.length === 1 ? 'movie' : 'movies'} to explore
+              </span>
+            )}
+          </div>
+        </header>
+
+        {shows.length > 0 ? (
+          <div className='grid grid-cols-1 justify-items-center gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4'>
+            {shows.map((movie) => (
+              <Card movie={movie} key={movie._id} />
+            ))}
+          </div>
+        ) : (
+          <div className='flex flex-col items-center rounded-3xl border border-white/10 bg-white/[0.03] px-6 py-16 text-center sm:py-20'>
+            <span className='mb-5 grid h-16 w-16 place-items-center rounded-2xl border border-primary/20 bg-primary/10 text-primary'>
+              <Film className='h-7 w-7' aria-hidden='true' />
+            </span>
+            <h2 className='text-2xl font-semibold text-white'>No movies just yet</h2>
+            <p className='mt-2 max-w-md text-sm leading-6 text-gray-400'>
+              We couldn’t find any movies to show right now. Check back soon, or head home to see what’s featured.
+            </p>
+            <Link
+              to='/'
+              className='mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-dull'
+            >
+              Explore QuickWatch
+              <MoveRight className='h-4 w-4' aria-hidden='true' />
+            </Link>
+          </div>
+        )}
+      </section>
+    </main>
+  )
 }
 
 export default Movies
